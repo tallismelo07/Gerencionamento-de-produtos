@@ -4,10 +4,20 @@ import GerencionamentoDeProdutos.ClasseMae.ItensEstoque;
 
 public class Produto implements ItensEstoque {
     public String name;
-    public Integer quantity;
-    public Double precoUtilitario;
+    public int quantity;
+    public double precoUtilitario;
 
-    public Double getPrecoUtilitario() {
+    public Produto() {
+
+    }
+
+    public Produto(String name, int quantity, double precoUtilitario) {
+        this.name = name;
+        this.quantity = quantity;
+        this.precoUtilitario = precoUtilitario;
+    }
+
+    public double getPrecoUtilitario() {
         return precoUtilitario;
     }
 
@@ -17,7 +27,11 @@ public class Produto implements ItensEstoque {
     }
 
     @Override
-    public double calcularValorTotal(double valor) {
-        return this.getPrecoUtilitario() + valor;
+    public double calcularValorTotal() {
+       return this.getPrecoUtilitario() * quantity;
+    }
+
+    public String toString() {
+        return name + " - Quantidade: " + quantity + ", Valor Total: R$ " + calcularValorTotal();
     }
 }
